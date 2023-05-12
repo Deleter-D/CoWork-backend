@@ -1,0 +1,23 @@
+server:
+  port: 0
+
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/cowork?serverTimezone=UTC&useSSL=false&allowPublicKeyRetrieval=true
+    username: root
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    password: 123456
+  jpa:
+    database: mysql
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        show_sql: true
+        format_sql: true
+  application:
+    name: service-team
+  cloud:
+    nacos:
+      discovery:
+        server-addr: localhost:8848

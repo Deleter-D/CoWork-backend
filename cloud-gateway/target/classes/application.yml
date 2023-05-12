@@ -1,0 +1,28 @@
+server:
+  #  port: 9001
+  port: 80
+
+spring:
+  application:
+    name: service-gateway
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+      routes:
+        - id: nacos-user
+          uri: lb://service-user
+          predicates:
+            - Path=/user/**
+          filters:
+            - StripPrefix=1
+        - id: nacos-team
+          uri: lb://service-team
+          predicates:
+            - Path=/team/**
+          filters:
+            - StripPrefix=1
+    nacos:
+      discovery:
+        server-addr: localhost:8848
